@@ -29,3 +29,8 @@ func With_fail_numargs() {
 func With_fail_typeargs() {
 	logger.With(64, "universe") // want `zap.SugaredLogger requires keys to be strings \(got int\)`
 }
+
+func With_variadic_args(keyvals ...interface{}) {
+	logger.With(keyvals) // want `zap.SugaredLogger must have an even number .+`
+	logger.With(keyvals...)
+}

@@ -127,6 +127,11 @@ func run(pass *analysis.Pass) (interface{}, error) {
 
 		// Ensure there are an even number of arguments.
 		if len(args)%2 != 0 {
+			if len(args) == 1 && callExpr.Ellipsis.IsValid() {
+				// a user is passing a variadic parameter such as:
+				// obj.SugaredLogger.With(args...)
+				return
+			}
 			pass.ReportRangef(n, `zap.SugaredLogger must have an even number of "With" elements`)
 
 			// If there's an odd number of arguments, checking individual arguments is

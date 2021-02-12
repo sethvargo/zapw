@@ -14,3 +14,6 @@
 # Ignore zap in testdata - it's required for tests, but is not required to use
 # the analyzer.
 pkg/testdata/src/go.uber.org
+
+# Ignore compiled binaries
+bin/

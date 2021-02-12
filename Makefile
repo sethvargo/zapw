@@ -12,6 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+plugin:
+	@go build -buildmode=plugin -o ./bin/zapw.so ./plugin/example.go
+.PHONY: plugin
+
 test: zap-source
 	@go test \
 		-count=1 \
